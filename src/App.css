@@ -1,42 +1,113 @@
+/* 🌍 Root Container */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #e2e8f0;
+  background: transparent;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
+/* 🚀 Logo Styling */
 .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  will-change: transform, filter;
+  filter: drop-shadow(0 0 1em rgba(20, 184, 166, 0.6));
 }
 
+.logo:hover {
+  transform: scale(1.15) rotate(3deg);
+  filter: drop-shadow(0 0 1.5em #14b8a6) saturate(1.2);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa) saturate(1.4);
+}
+
+/* 🎡 Logo Spin Animation */
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+    animation: logo-spin infinite 15s linear;
   }
 }
 
+/* 🪟 Futuristic Card */
 .card {
   padding: 2em;
+  margin: 1.5em auto;
+  background: rgba(15, 61, 62, 0.2);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(20,184,166,0.6);
+  border-color: rgba(20,184,166,0.6);
+}
+
+/* 📖 Docs Link */
 .read-the-docs {
-  color: #888;
+  color: #94a3b8;
+  font-size: 0.95em;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease-in-out;
+}
+.read-the-docs:hover {
+  color: #14b8a6;
+  text-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
+}
+
+/* ✨ Headings */
+h1, h2, h3 {
+  font-weight: 700;
+  background: linear-gradient(90deg, #14b8a6, #20e0c7, #61dafb);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  animation: fadeSlide 1.2s ease-in-out forwards;
+}
+
+/* 🌀 Buttons */
+button {
+  border-radius: 10px;
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0f3d3e, #14b8a6);
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+button:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, #14b8a6, #20e0c7);
+  box-shadow: 0 6px 20px rgba(20,184,166,0.6);
+}
+
+/* 🌊 Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
