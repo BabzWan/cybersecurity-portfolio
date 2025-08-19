@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Root Styles */
+/* 🌍 Root Theme Variables */
 :root {
   --primary-color: #0f3e2a; /* deep green */
   --secondary-color: #14b8a6; /* teal/cyan accent */
@@ -10,132 +10,115 @@
   --text-dark: #213547;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
   font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.92);
-  background: linear-gradient(120deg, #1a1a2e, #16213e, #0f3460, #533483);
-  background-size: 300% 300%;
-  animation: bgGradient 20s ease infinite;
-
-  scroll-behavior: smooth;
+  color-scheme: dark;
+  color: var(--text-light);
+  background: linear-gradient(135deg, var(--bg-dark), #112d2f 70%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth; /* smoother navigation */
 }
 
-/* Animated Gradient Background */
-@keyframes bgGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Navbar */
-nav {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  backdrop-filter: blur(12px);
-  background: rgba(30, 30, 46, 0.7);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: -100;
-  transition: all 0.4s ease;
-}
-
-nav a {
-  margin: 0 1rem;
+/* 🌐 Links */
+a {
   font-weight: 500;
-  color: #d1d5ff;
+  color: var(--secondary-color);
   text-decoration: none;
-  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  transition: color 0.3s ease-in-out;
 }
-nav a:hover {
-  color: #fff;
-  transform: translateY(-2px);
+a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -3px;
+  background: var(--secondary-color);
+  transition: width 0.3s ease-in-out;
+}
+a:hover {
+  color: #20e0c7;
+}
+a:hover::after {
+  width: 100%;
 }
 
-/* Sections Fade-in Scroll Effect */
-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* 🖥 Body */
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: gradientFlow 12s ease infinite alternate;
 }
 
-/* Headings with Neon Glow */
+/* 🔤 Headings */
 h1 {
   font-size: 3.5em;
   line-height: 1.1;
-  background: linear-gradient(90deg, #646cff, #b86cff);
+  background: linear-gradient(90deg, var(--secondary-color), #20e0c7);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 15px rgba(100,108,255,0.7);
-  animation: glowPulse 3s infinite alternate;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-@keyframes glowPulse {
-  from { text-shadow: 0 0 8px rgba(100,108,255,0.5); }
-  to { text-shadow: 0 0 20px rgba(100,108,255,1); }
-}
-
-/* Neumorphism Buttons */
+/* 🎛 Buttons */
 button {
-  border: none;
-  border-radius: 12px;
-  padding: 0.7em 1.4em;
-  font-size: 1.05em;
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color);
+  padding: 0.6em 1.4em;
+  font-size: 1em;
   font-weight: 600;
   font-family: inherit;
-  background: #1f1f2e;
-  color: #fff;
+  background-color: var(--primary-color);
+  color: var(--text-light);
   cursor: pointer;
-  box-shadow: 8px 8px 16px rgba(0,0,0,0.4),
-              -6px -6px 12px rgba(255,255,255,0.05);
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 12px 12px 20px rgba(0,0,0,0.5),
-              -8px -8px 14px rgba(255,255,255,0.08);
+  background: var(--secondary-color);
+  color: #0d1b1e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
-button:active {
-  transform: translateY(0px) scale(0.97);
-  box-shadow: inset 4px 4px 8px rgba(0,0,0,0.5),
-              inset -4px -4px 8px rgba(255,255,255,0.1);
-}
-
-/* Card with Glassmorphism */
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 2rem;
-  margin: 2rem;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+button:focus,
+button:focus-visible {
+  outline: 3px solid var(--secondary-color);
 }
 
-/* Light Mode */
+/* ☀ Light Mode */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background: linear-gradient(120deg, #ffffff, #f5f5ff, #eaeaff);
+    color: var(--text-dark);
+    background: var(--bg-light);
   }
-  nav {
-    background: rgba(255,255,255,0.6);
+  a:hover {
+    color: var(--primary-color);
   }
   button {
-    background: #f9f9f9;
-    color:#213547;}
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+  }
+}
+
+/* ✨ Animations */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
