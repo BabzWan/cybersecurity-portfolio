@@ -5,7 +5,7 @@
   padding: 2rem;
   text-align: center;
   font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: #e2e8f0;
+  color: #a2244c;
   background: transparent;
   animation: fadeIn 1.2s ease-in-out;
 }
@@ -16,7 +16,7 @@
   padding: 1.5em;
   transition: transform 0.4s ease, filter 0.4s ease;
   will-change: transform, filter;
-  filter: drop-shadow(0 0 1em rgba(20, 184, 166, 0.6));
+  filter: drop-shadow(0 0 1em rgba(148, 11, 105, 0.6));
 }
 
 .logo:hover {
